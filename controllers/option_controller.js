@@ -33,3 +33,28 @@ module.exports.addVote= function (req,res){
 
         });
 };
+
+module.exports.deleteOption = function(req,res){
+    Option.findById({_id:req.params.id},function(err,option){
+        if(err){
+            return res.json(500,{
+                message:"Option Not Found"
+            });
+        }
+        if(option){
+          Option.findByIdAndDelete({_id:req.params.id},function(err,deleteOption){
+            if(err){
+                return res.json(500,{
+                    message:"Error in Deleting the Option",
+                    data:err
+                });
+            }
+            return res.json(200,{
+                message:"Option is Deleted Successfully"
+            });
+
+          });
+
+        }
+    });
+};

@@ -81,3 +81,33 @@ module.exports.addOption= function(req,res){
         }
     });
 };
+
+module.exports.delete = function(req,res){
+    console.log(req.params.id);
+    Question.findByIdAndDelete(
+        {_id:req.params.id},
+        function(err,question){
+            if(err){
+                return res.json(500,{
+                    message:"Error in Deleting the Question",
+                    data:err
+                });
+            }
+            return res.json(200,{
+                message:"Question is Deleted Successfully "
+            });
+        }
+        );
+        Option.deleteMany({question : req.params.id},
+            function(err,option){
+                if(err){
+                    return res.json(500,{
+                        message:"Error in Deleting the Option",
+                        data:err
+                    });
+                }
+                return res.json(200,{
+                    message:"Options are Deleted Successfully"
+                });
+            });
+}
