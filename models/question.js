@@ -7,6 +7,12 @@ const questionSchema = new mongoose.Schema({
         type : String,
         required:true  
     },
+    option:[
+        {
+            type:mongoose.Schema.Types.ObjectId,
+            ref : "Option"
+        }
+    ],
     vote:{
        type : Boolean
     }
@@ -19,4 +25,4 @@ const questionSchema = new mongoose.Schema({
 
 
 const Question = mongoose.model("Question",questionSchema);
-module.export = Question;
+module.exports = Question;
