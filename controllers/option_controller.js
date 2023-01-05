@@ -1,6 +1,7 @@
 const Question = require("../models/question");
 const Option = require("../models/option");
 
+// action for adding votes 
 module.exports.addVote= function (req,res){
     Option.findById({_id:req.params.id},
         function(err,option){
@@ -34,6 +35,7 @@ module.exports.addVote= function (req,res){
         });
 };
 
+// action for deleting option 
 module.exports.deleteOption = function(req,res){
     Option.findById({_id:req.params.id},function(err,option){
         if(err){

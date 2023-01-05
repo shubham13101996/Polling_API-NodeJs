@@ -7,6 +7,7 @@ const questionSchema = new mongoose.Schema({
         type : String,
         required:true  
     },
+    //  option's id array for better fetching
     option:[
         {
             type:mongoose.Schema.Types.ObjectId,

@@ -3,6 +3,9 @@ const router = express.Router();
 
 const optionController = require("../controllers/option_controller");
 
-router.post("/:id/add_vote",optionController.addVote);
+//routes for option action
+
+router.post("/add_vote/:id",optionController.addVote);
 router.get("/delete/:id",optionController.deleteOption);
-module.exports=router;
+
+module.exports = router ;

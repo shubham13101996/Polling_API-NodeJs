@@ -1,6 +1,7 @@
 const Question = require("../models/question");
 const Option = require("../models/option");
 
+// action for creating question 
 module.exports.create = function(req,res){
     Question.create(
         {title : req.body.title,
@@ -26,6 +27,7 @@ module.exports.create = function(req,res){
     );
 };
 
+// action for adding option 
 
 module.exports.addOption= function(req,res){
     Question.findById({_id:req.param.id},function(err,question){
@@ -82,8 +84,10 @@ module.exports.addOption= function(req,res){
     });
 };
 
+// action to delete question and its option 
 module.exports.delete = function(req,res){
     console.log(req.params.id);
+    // finding question by id and delete it 
     Question.findByIdAndDelete(
         {_id:req.params.id},
         function(err,question){
@@ -98,6 +102,7 @@ module.exports.delete = function(req,res){
             });
         }
         );
+        // deleting associated option
         Option.deleteMany({question : req.params.id},
             function(err,option){
                 if(err){
@@ -111,3 +116,28 @@ module.exports.delete = function(req,res){
                 });
             });
 }
+
+// action to show all the question 
+module.exports.ShowQuestions = async (req,res)=>{
+    try {
+        // finding all the question and showing 
+        let question= await Question.findById(req.params.id).populate({
+            path: "option"
+        });
+        if(question){
+            return res.status(200).json({
+                message:"Got the question successfully",
+                data:question
+            });
+        }else{
+            return res.status(400).json({
+                message:"Question doesn't exist"
+            });
+        }
+    } catch (error) {
+        return res.status(500).json({
+            message:"Error From the Server",
+            data: error
+        });
+    }
+};
