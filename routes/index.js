@@ -1,15 +1,14 @@
 const express = require("express");
-const router= express.Router();
+const router = express.Router();
 
 console.log("router loaded successfully");
 
-const homeController = require('../controllers/home_controller');
-router.get("/", homeController.home);
-// connecting main route to the question related routes 
-router.use("/question",require("./question"));
+const homeController = require("../controllers/home_controller");
 
-// connecting main route to the question related routes 
-router.use("/option",require("./option"));
-
+router.get("/", homeController.front);
+// question related route's path
+router.use("/question", require("./question"));
+// option related route's path
+router.use("/option", require("./option"));
 
 module.exports = router;
