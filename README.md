@@ -1,17 +1,18 @@
 ## Polling_API(NodeJs)
 
-This is a backend project intended to used at platforms where polling/voting type of situation is expected. With this API you can do the following activities:
+This is a backend project intended to used at platforms where polling/voting type of situation is expected. With this API you can do the following activities:<br/>
 
-1.Create your own questions
-2.Delete the questions
-3.Add Options to the question
-4.View question along with its options
-5.Delete Options
-6.Add Votes to the option
+1.Create your own questions<br/>
+2.Delete the questions<br/>
+3.Add Options to the question<br/>
+4.View question along with its options<br/>
+5.Delete Options<br/>
+6.Add Votes to the option<br/>
 
 ## Important endpoints of the API:
 
 open PostMan Application and try running these commands<br/>
+
 1.For creating question--> localhost:8000/question/create <br/>
 method: POST , here you have to give key as title and value as question<br/>
 
@@ -32,7 +33,7 @@ method: POST, here you have to give \_id of that option<br/>
 
 ## Important Link:
 
-Video Explaination:
+Video Explaination: https://youtu.be/bdyR2aqbAgw
 
 ## Tech Stack:
 
